@@ -15,7 +15,7 @@ RxSwift文档的中文翻译版本
 | [Examples.md](source/Examples.md) ||||
 | [GettingStarted.md](source/GettingStarted.md) ||||
 | [HotAndColdObservables.md](source/HotAndColdObservables.md) ||||
-| [Installation.md](source/Installation.md) ||||
+| [Installation.md](source/Installation.md) ||[Edison Hsu](https://github.com/Edison-Hsu)||
 | [IssueTemplate.md](source/IssueTemplate.md) ||||
 | [Linux.md](source/Linux.md) ||||
 | [MathBehindRx.md](source/MathBehindRx.md) ||||
