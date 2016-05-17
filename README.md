@@ -1,2 +1,4 @@
 # RxSwift-CN
-RxSwift Documentation in Chinese
+RxSwift项目中文档的中文翻译版本
+
+##
