@@ -9,7 +9,7 @@ RxSwift文档的中文翻译版本
 | 原文 | 中文| 翻译人 | 校验人 |
 | --- | ---- | ---- | ----- |
 | [API.md](source/API.md) ||[Alan Li](https://github.com/iamlipan)||
-| [ComparisonWithOtherLibraries.md](source/ComparisonWithOtherLibraries.md) ||||
+| [ComparisonWithOtherLibraries.md](source/ComparisonWithOtherLibraries.md) ||[zerob13](https://github.com/zerob13)||
 | [DesignRationale.md](source/DesignRationale.md) ||||
 | [ExampleApp.md](source/ExampleApp.md) ||||
 | [Examples.md](source/Examples.md) ||||
