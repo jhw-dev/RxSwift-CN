@@ -12,7 +12,7 @@ RxSwift文档的中文翻译版本
 | [ComparisonWithOtherLibraries.md](source/ComparisonWithOtherLibraries.md) ||[zerob13](https://github.com/zerob13)||
 | [DesignRationale.md](source/DesignRationale.md) ||||
 | [ExampleApp.md](source/ExampleApp.md) ||||
-| [Examples.md](source/Examples.md) ||||
+| [Examples.md](source/Examples.md) ||[Chawler](https://github.com/chawler)||
 | [GettingStarted.md](source/GettingStarted.md) ||||
 | [HotAndColdObservables.md](source/HotAndColdObservables.md) ||||
 | [Installation.md](source/Installation.md) ||[Edison Hsu](https://github.com/Edison-Hsu)||
