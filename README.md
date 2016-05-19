@@ -1,5 +1,5 @@
 # RxSwift-CN
-RxSwift文档的中文翻译版本
+[RxSwift](https://github.com/ReactiveX/RxSwift)文档的中文翻译版本
 
 |当前RxSwift标的版本|
 |-----|
