@@ -8,9 +8,8 @@
 
 相对来说，与 ReactiveCoca 最大的不同应该是在与项目在对抽象层的设计上使用了完全不同的思想。
 
-RxSwift 的主要目的是通过可观测序列的形式去提供一个环境无关的拥有抽象化计算和组合能力的组件。
-We then aim to improve the experience of using RxSwift on specific platforms. To do this, RxCocoa uses generic computations to build more practical abstractions and wrap Foundation/Cocoa/UKit frameworks. That means that other libraries give context and semantics to the generic computation engine RxSwift provides such as `Driver`, `ControlProperty`, `ControlEvent`s and more.
-
+RxSwift 的主要目的是通过可观测序列的形式去提供一个环境无关可组合的计算型抽象胶水层。
+然后我们再专注于去提高 RxSwift 在一些具体平台上的体验。为了完成这一目标，RxCocoa 使用计算型泛型抽象来构造更为实用的抽象层并且对 Foundation/Cocoa/UKit 的框架都进行一层封装。这意味着，在 RxSwift 通过提供 `Driver`,`ControlProperty`,`ControlEvent` 等来实现了其他库通过使用计算型泛型的语法来提供相应的接口。
 One of the benefits to representing all of these abstractions as a single concept - ​_observable sequences_​ - is that all computation abstractions built on top of them are also composable in the same fundamental way. They all follow the same contract and implement the same interface.
  It is also easy to create flexible subscription (resource) sharing strategies or use one of the built-in ones: `share`, `shareReplay`, `publish`, `multicast`, `shareReplayLatestWhileConnected`...
 
