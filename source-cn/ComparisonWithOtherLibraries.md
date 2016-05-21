@@ -10,9 +10,10 @@
 
 RxSwift 的主要目的是通过可观测序列的形式去提供一个环境无关可组合的计算型抽象胶水层。
 然后我们再专注于去提高 RxSwift 在一些具体平台上的体验。为了完成这一目标，RxCocoa 使用计算型泛型抽象来构造更为实用的抽象层并且对 Foundation/Cocoa/UKit 的框架都进行一层封装。这意味着，在 RxSwift 通过提供 `Driver`,`ControlProperty`,`ControlEvent` 等来实现了其他库通过使用计算型泛型的语法来提供相应的接口。
-One of the benefits to representing all of these abstractions as a single concept - ​_observable sequences_​ - is that all computation abstractions built on top of them are also composable in the same fundamental way. They all follow the same contract and implement the same interface.
- It is also easy to create flexible subscription (resource) sharing strategies or use one of the built-in ones: `share`, `shareReplay`, `publish`, `multicast`, `shareReplayLatestWhileConnected`...
+将这些抽象层通过统一的一个概念，也就是 ​_可观测序列（observable sequences）_​，来展现的其中一个好处是所有的计算型抽象接口都会构建在这个概念之上，并且它们都会遵循一套相同的基本原则来组建。它们也都会遵循相同的结构去实现一套相同的接口。
+同时，这样的设计也提供了可以非常方便和灵活的去创造订阅（资源）共享策略的方法： `share`, `shareReplay`, `publish`, `multicast`, `shareReplayLatestWhileConnected`...
 
-This library also offers a fine-tunable concurrency model. If concurrent schedulers are used, observable sequence operators will preserve sequence properties. The same observable sequence operators will also know how to detect and optimally use known serial schedulers. ReactiveCocoa has a more limited concurrency model and only allows serial schedulers.
+这个库也提供了容易配置的并发模型。如果使用了并发调度器， 可观测的序列会自动保持序列的属性。对于同一个可观测序列进行的操作会自动探测并优化使用相应的调度器。ReactiveCocoa 则只提供了一个相对来说更多限制的并发模型并且只允许单一连续的调度器。
 
-Multithreaded programming is really hard and detecting non trivial loops is even harder. That's why all operators are built in a fault tolerant way. Even if element generation occurs during element processing (recursion), operators will try to handle that situation and prevent deadlocks. This means that in the worst possible case programming error will cause stack overflow, but users won't have to manually kill the app, and you will get a crash report in error reporting systems so you can find and fix the problem.
+众所周知，多线程编程是非常困难的，判断其中是否存在闭环更是难上加难。这就是为什么，在 RxSwift 中所有的方法都有着较好的容错机制。即使在产生元素的过程中出现了对自身的递归（死循环），这些方法依然会试图去处理这类异常情况并且防止死锁的产生。这意味着最坏情况下你的程序最多只是抛出了一些错误异常而并不会出现用户不得不去杀死你的应用的情况。更好的一点是，这样子你会相对比较容易去获取你程序的出错信息从而修复问题。
+.
