@@ -10,6 +10,7 @@
 
 RxSwift 的主要目的是通过可观测序列的形式去提供一个环境无关可组合的计算型抽象胶水层。
 然后我们再专注于去提高 RxSwift 在一些具体平台上的体验。为了完成这一目标，RxCocoa 使用计算型泛型抽象来构造更为实用的抽象层并且对 Foundation/Cocoa/UKit 的框架都进行一层封装。这意味着，在 RxSwift 通过提供 `Driver`,`ControlProperty`,`ControlEvent` 等来实现了其他库通过使用计算型泛型的语法来提供相应的接口。
+
 将这些抽象层通过统一的一个概念，也就是 ​_可观测序列（observable sequences）_​，来展现的其中一个好处是所有的计算型抽象接口都会构建在这个概念之上，并且它们都会遵循一套相同的基本原则来组建。它们也都会遵循相同的结构去实现一套相同的接口。
 同时，这样的设计也提供了可以非常方便和灵活的去创造订阅（资源）共享策略的方法： `share`, `shareReplay`, `publish`, `multicast`, `shareReplayLatestWhileConnected`...
 
