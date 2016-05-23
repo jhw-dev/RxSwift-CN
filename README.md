@@ -9,7 +9,7 @@
 | 原文 | 中文| 翻译人 | 校验人 |
 | --- | ---- | ---- | ----- |
 | [API.md](source/API.md) |[API.md](source-cn/API.md)|[Alan Li](https://github.com/iamlipan)||
-| [ComparisonWithOtherLibraries.md](source/ComparisonWithOtherLibraries.md) |[ComparisonWithOtherLibraries.md](source-cn/ComparisonWithOtherLibraries.md)|[zerob13](https://github.com/zerob13)||
+| [ComparisonWithOtherLibraries.md](source/ComparisonWithOtherLibraries.md) |[ComparisonWithOtherLibraries.md](source-cn/ComparisonWithOtherLibraries.md)|[zerob13](https://github.com/zerob13)|[Edison Hsu](https://github.com/Edison-Hsu)|
 | [DesignRationale.md](source/DesignRationale.md) ||||
 | [ExampleApp.md](source/ExampleApp.md) ||||
 | [Examples.md](source/Examples.md) ||[Chawler](https://github.com/chawler)||
