@@ -169,25 +169,36 @@ This will print:
 ```
 
 Note the you usually do not want to manually call `dispose`; this is only educational example. Calling dispose manually is usually a bad code smell. There are better ways to dispose subscriptions. We can use `DisposeBag`, the `takeUntil` operator, or some other mechanism.
+一般来讲你不想手动调用 `dispose`; 这只是一个教育例子。手动调用dispose一般来讲是一个坏做法。这里有更好的方法处理订阅。我们能使用 `DisposeBag`， `takeUntil` 操作符，或其他技巧。
 
 So can this code print something after the `dispose` call executed? The answer is: it depends.
+那么这个代码在执行 `dispose` 之后能打印东西吗？答案是：看情况。
 
 * If the `scheduler` is a **serial scheduler** (ex. `MainScheduler`) and `dispose` is called on **on the same serial scheduler**, the answer is **no**.
+* 如果 `scheduler` 是一个 **系列调度** (比如，`MainScheduler`) 并且**相同的系列调度上**调用了 `dispose`，那么答案是**否**。 
 
 * Otherwise it is **yes**.
+* 否则答案是 **yes**
 
 You can find out more about schedulers [here](Schedulers.md).
+你能找出更多关于调度[here](Schedulers.md)
 
 You simply have two processes happening in parallel.
+你可能有两个并行的进程。
 
 * one is producing elements
+* 一个在处理元素
 * the other is disposing the subscription
+* 另一个在处置订阅
 
 The question "Can something be printed after?" does not even make sense in the case that those processes are on different schedulers.
+“能在之后打印东西？”这个问题根本没有意义如果进程在两个不同的调度上。
 
 A few more examples just to be sure (`observeOn` is explained [here](Schedulers.md)).
+一些更多的例子只是为了(`observeOn` 解释)[here](Schedulers.md))。
 
 In case we have something like:
+如果我们有如下：
 
 ```swift
 let subscription = Observable<Int>.interval(0.3, scheduler: scheduler)
