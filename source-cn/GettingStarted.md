@@ -195,7 +195,7 @@ The question "Can something be printed after?" does not even make sense in the c
 “能在之后打印东西？”这个问题根本没有意义如果进程在两个不同的调度上。
 
 A few more examples just to be sure (`observeOn` is explained [here](Schedulers.md)).
-一些更多的例子只是为了(`observeOn` 解释)[here](Schedulers.md))。
+一些更多的例子只是为了(`observeOn`的说明在[这](Schedulers.md))。
 
 In case we have something like:
 如果我们有如下：
@@ -214,8 +214,10 @@ subscription.dispose() // called from main thread
 ```
 
 **After the `dispose` call returns, nothing will be printed. That is guaranteed.**
+**在调用`dispose`返回之后，不会有任何打印。那是肯定的**
 
 Also, in this case:
+另外，如果有如下例子：
 
 ```swift
 let subscription = Observable<Int>.interval(0.3, scheduler: scheduler)
@@ -231,26 +233,34 @@ subscription.dispose() // executing on same `serialScheduler`
 ```
 
 **After the `dispose` call returns, nothing will be printed. That is guaranteed.**
+**在调用`dispose`返回之后，不会有任何打印。这是肯定的**
 
 ### Dispose Bags
+### 处置包(Dispose Bags)
 
 Dispose bags are used to return ARC like behavior to RX.
+`Dispose bags`之于RX被用来返回类似ARC行为
 
 When a `DisposeBag` is deallocated, it will call `dispose` on each of the added disposables.
+当一个 `DisposeBag` 被销毁， 它会在每一个已加入的可处置对象中调用 `dispose` 方法。
 
 It does not have a `dispose` method and therefore does not allow calling explicit dispose on purpose. If immediate cleanup is required, we can just create a new bag.
+因为他没有 `dispose` 方法，所以不允许在目标上显示调用 dispose 方法。如果需要马上清理，我们仅需创建一个新的dipose bag。
 
 ```swift
   self.disposeBag = DisposeBag()
 ```
 
 This will clear old references and cause disposal of resources.
+这会清理旧的引用并且触发资源处理。
 
 If that explicit manual disposal is still wanted, use `CompositeDisposable`. **It has the wanted behavior but once that `dispose` method is called, it will immediately dispose any newly added disposable.**
+如果还是需要手动显示清理，使用 `CompositeDisposable`。 **它有被需要的行为但是一旦调用 `dispose` 方法，它会立刻处理任何新加入的可处置对象。
 
 ### Take until
 
 Additional way to automatically dispose subscription on dealloc is to use `takeUntil` operator.
+还有一个销毁时自动处理订阅的方法，那就是使用 `takeUntil` 操作符。
 
 ```swift
 sequence
