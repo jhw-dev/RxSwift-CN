@@ -271,14 +271,19 @@ sequence
 ```
 
 ## Implicit `Observable` guarantees
+## `Observable` 隐式惯例
 
 There is also a couple of additional guarantees that all sequence producers (`Observable`s) must honor.
+这里还有一些另外的惯例，所有序列生产者(`Observable`们)都需要遵守。
 
 It doesn't matter on which thread they produce elements, but if they generate one element and send it to the observer `observer.on(.Next(nextElement))`, they can't send next element until `observer.on` method has finished execution.
+无论生产者在哪个线程制造元素，如果他们生成一个元素并且发送给观察者(observer) `observer.on(.Next(nextElement))`, 他们不能发送下一个元素直到 `observer.on` 方法完成执行。
 
 Producers also cannot send terminating `.Completed` or `.Error` in case `.Next` event hasn't finished.
+生产者也不能发送终止 `.Completed` 或者 `.Error`，如果 `.Next` 事件没有完成。
 
 In short, consider this example:
+简而言之，考虑如下例子：
 
 ```swift
 someObservable
@@ -290,6 +295,7 @@ someObservable
 ```
 
 this will always print:
+打印永远如下：
 
 ```
 Event processing started
@@ -301,6 +307,7 @@ Event processing ended
 ```
 
 it can never print:
+不可能出现如下打印：
 
 ```
 Event processing started
