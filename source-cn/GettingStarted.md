@@ -449,10 +449,13 @@ Ended ----
 ```
 
 ## Creating an `Observable` that performs work
+## 创建一个执行工作的 `Obserbable`
 
 Ok, now something more interesting. Let's create that `interval` operator that was used in previous examples.
+好的，现在来一些更有趣的事情。让我们创建一个 `interval` 操作符，他在之前的例子中有用到。
 
 *This is equivalent of actual implementation for dispatch queue schedulers*
+*这等价于实际的派遣队列调度实现*
 
 ```swift
 func myInterval(interval: NSTimeInterval) -> Observable<Int> {
@@ -513,6 +516,7 @@ Ended ----
 ```
 
 What if you would write
+假设你这么写
 
 ```swift
 let counter = myInterval(0.1)
@@ -540,6 +544,7 @@ print("Ended ----")
 ```
 
 this would print:
+这会打印：
 
 ```
 Started ----
@@ -566,6 +571,7 @@ Ended ----
 ```
 
 **Every subscriber upon subscription usually generates it's own separate sequence of elements. Operators are stateless by default. There are vastly more stateless operators than stateful ones.**
+**每一个订阅者
 
 ## Sharing subscription and `shareReplay` operator
 
