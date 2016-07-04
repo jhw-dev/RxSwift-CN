@@ -320,14 +320,20 @@ Event processing ended
 ## 创建你自己的 `Observable`
 
 There is one crucial thing to understand about observables.
+理解 `Observable` 还有一件很重要的事情。
 
 **When an observable is created, it doesn't perform any work simply because it has been created.**
+**当一个 observable 被创建，他不简单的执行任何工作因为他已被创建了**
 
 It is true that `Observable` can generate elements in many ways. Some of them cause side effects and some of them tap into existing running processes like tapping into mouse events, etc.
+`Observable` 可以通过很多方法生成元素。他们其中一些会引起副作用，而另一些进入正存在运行的进程中，比如鼠标的点击事件，等等。
 
 **But if you just call a method that returns an `Observable`, no sequence generation is performed, and there are no side effects. `Observable` is just a definition how the sequence is generated and what parameters are used for element generation. Sequence generation starts when `subscribe` method is called.**
+**但是如果你只是调用一个返回一个 `Observable` 的方法，生成序列不会被执行，并且不会有副作用。`Observable` 只是一个解释序列如果被生成和什么参数被使用于生成元素的定义。生成序列开始于 `subscribe` 方法被调用的时候。**
 
 E.g. Let's say you have a method with similar prototype:
+例如：让我们来说说一个有相似原型的方法：
+
 
 ```swift
 func searchWikipedia(searchTerm: String) -> Observable<Results> {}
@@ -337,9 +343,11 @@ func searchWikipedia(searchTerm: String) -> Observable<Results> {}
 let searchForMe = searchWikipedia("me")
 
 // no requests are performed, no work is being done, no URL requests were fired
+// 请求没有被执行，不执行任何工作，URL请求没有被触发。
 
 let cancel = searchForMe
   // sequence generation starts now, URL requests are fired
+  // 生成序列现在开始，URL请求被触发
   .subscribeNext { results in
       print(results)
   }
@@ -347,10 +355,13 @@ let cancel = searchForMe
 ```
 
 There are a lot of ways how you can create your own `Observable` sequence. Probably the easiest way is using `create` function.
+这里有许多方法用于创建你自己的 `Observable` 序列。 最简单的方法大概就是使用 `create` 函数。
 
 Let's create a function which creates a sequence that returns one element upon subscription. That function is called 'just'.
+让我们创建一个函数，这个函数会创建一个序列并且返回一个可订阅的元素。这个函数被称为 'just'。
 
 *This is the actual implementation*
+*这是实际的实现*
 
 ```swift
 func myJust<E>(element: E) -> Observable<E> {
@@ -374,16 +385,23 @@ this will print:
 ```
 
 Not bad. So what is the `create` function?
+不错。那什么是 `create` 函数？
 
 It's just a convenience method that enables you to easily implement `subscribe` method using Swift closures. Like `subscribe` method it takes one argument, `observer`, and returns disposable.
+他只是一个方便地使你使用Swift闭包来简单的实现 `subscribe` 方法。像 `subscribe` 方法需要一个参数，`observer`，并且返回 disposable。
+
 
 Sequence implemented this way is actually synchronous. It will generate elements and terminate before `subscribe` call returns disposable representing subscription. Because of that it doesn't really matter what disposable it returns, process of generating elements can't be interrupted.
+实现序列这个方法实际上是同步的。他会生成元素并且在 `subscribe` 调用返回 disposable 订阅之前终止。
 
 When generating synchronous sequences, the usual disposable to return is singleton instance of `NopDisposable`.
+当生成同步的序列，通常返回的 disposable 是 `NopDisposable` 的单例实例。
 
 Lets now create an observable that returns elements from an array.
+现在来创建一个从数组中返回元素的 obserbable。
 
 *This is the actual implementation*
+*这是实际的实现*
 
 ```swift
 func myFrom<E>(sequence: [E]) -> Observable<E> {
