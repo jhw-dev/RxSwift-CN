@@ -574,15 +574,21 @@ Ended ----
 **每一个订阅者
 
 ## Sharing subscription and `shareReplay` operator
+## 分享订阅和 `shareReplay` 操作符
 
 But what if you want that multiple observers share events (elements) from only one subscription?
+但是如果你想要多个观察者从一个订阅中分享事件。
 
 There are two things that need to be defined.
+这有两件事需要被定义
 
 * How to handle past elements that have been received before the new subscriber was interested in observing them (replay latest only, replay all, replay last n)
+* 如何处理那些新的订阅者被观察之前已经收到的元素。（只重放最近的，重放所有，重放最近n个）
 * How to decide when to fire that shared subscription (refCount, manual or some other algorithm)
+* 如果决定什么时候出发分享的订阅（引用计数，手动或者一些其他算法）
 
 The usual choice is a combination of `replay(1).refCount()` aka `shareReplay()`.
+通常的选择是一个`replay(1).refCount()` 又名 `shareReplay()`的组合。
 
 ```swift
 let counter = myInterval(0.1)
@@ -636,10 +642,13 @@ Ended ----
 ```
 
 Notice how now there is only one `Subscribed` and `Disposed` event.
+注意现在只有一个 `Subscribed` 和 `Disposed` 事件。
 
 Behavior for URL observables is equivalent.
+URL 的 observables 行为是一样的。
 
 This is how HTTP requests are wrapped in Rx. It's pretty much the same pattern like the `interval` operator.
+这是HTTP请求如果用Rx封装的。这和 `interval` 操作符的模式非常相似。
 
 ```swift
 extension NSURLSession {
