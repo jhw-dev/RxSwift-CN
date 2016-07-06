@@ -826,10 +826,14 @@ so please try not to do this.
 ## Playgrounds
 
 If you are unsure how exactly some of the operators work, [playgrounds](../Rx.playground) contain almost all of the operators already prepared with small examples that illustrate their behavior.
+如果你不确定一些操作符是如何工作的，[playgrounds](../Rx.playground) 包含
+几乎所有操作符已经准备好的小例子来举例说明他们的行为。
 
 **To use playgrounds please open Rx.xcworkspace, build RxSwift-OSX scheme and then open playgrounds in Rx.xcworkspace tree view.**
+**要使用 playgrounds 请打开 Rx.xcworkspace，构建 RxSwift-OSX scheme 并且打开 Rx.xcworkspace 树视图中的 playgrounds。**
 
 **To view the results of the examples in the playgrounds, please open the `Assistant Editor`. You can open `Assistant Editor` by clicking on `View > Assistant Editor > Show Assistant Editor`**
+**想要查看 playgrounds 例子的结果，请打开 `Assistant Editor`。你可以通过点击 `View > Assistant Editor > Show Assistant Editor` 打开 `Assistant Editor`**
 
 ## Error handling
 
