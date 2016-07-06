@@ -680,30 +680,43 @@ extension NSURLSession {
 ```
 
 ## Operators
+## 操作符
 
 There are numerous operators implemented in RxSwift. The complete list can be found [here](API.md).
+RxSwift中有许多实现了的操作符。完整列表在[这](API.md)
 
 Marble diagrams for all operators can be found on [ReactiveX.io](http://reactivex.io/)
+所有操作的 Marble 图可以在[ReactiveX.io](http://reactivex.io/)上找到。
 
 Almost all operators are demonstrated in [Playgrounds](../Rx.playground).
+大多数操作符的演示在[Playgrounds](../Rx.playground)。
 
 To use playgrounds please open `Rx.xcworkspace`, build `RxSwift-OSX` scheme and then open playgrounds in `Rx.xcworkspace` tree view.
+使用 playgrounds 请打开 `Rx.xcworkspace`， 构建 `RxSwift-OSX` scheme 然后在 `Rx.xcworkspace` 视图树种打开 playgrounds。
 
 In case you need an operator, and don't know how to find it there a [decision tree of operators](http://reactivex.io/documentation/operators.html#tree).
+如果你需要一个操作符，但是不知道如何找到他，这里有一个[操作符大全](http://reactivex.io/documentation/operators.html#tree)
 
 [Supported RxSwift operators](API.md#rxswift-supported-operators) are also grouped by function they perform, so that can also help.
+[RxSwift支持的操作符](API.md#rxswift-supported-operators)也是按照他们的功能被分组，那也是有些帮助。
 
 ### Custom operators
+### 自定义操作符
 
 There are two ways how you can create custom operators.
+这有两种创建自定义操作符的方法。
 
 #### Easy way
+#### 方便的方法
 
 All of the internal code uses highly optimized versions of operators, so they aren't the best tutorial material. That's why it's highly encouraged to use standard operators.
+所有内部代码使用高度优化了的版本的操作符，所以他们不是最好的教程原料。这也是为什么高度鼓励使用标准操作符的原因。
 
 Fortunately there is an easier way to create operators. Creating new operators is actually all about creating observables, and previous chapter already describes how to do that.
+幸运的是这有一个更简单的方法创建操作符。创建操作符其实就是创建 observables， 并且之前的章节已经描述了如何操作了。
 
 Lets see how an unoptimized map operator can be implemented.
+让我们看看如何实现一个未被优化的 map 操作。
 
 ```swift
 extension ObservableType {
@@ -728,6 +741,7 @@ extension ObservableType {
 ```
 
 So now you can use your own map:
+所以现在你能看到自己的 map :
 
 ```swift
 let subscription = myInterval(0.1)
@@ -740,6 +754,7 @@ let subscription = myInterval(0.1)
 ```
 
 and this will print
+并且会打印
 
 ```
 Subscribed
@@ -756,10 +771,13 @@ This is simply 8
 ```
 
 ### Life happens
+### 生活就是这样
 
 So what if it's just too hard to solve some cases with custom operators? You can exit the Rx monad, perform actions in imperative world, and then tunnel results to Rx again using `Subject`s.
+所以如果用自定义操作符解决问题太困难？你可以退出 Rx monad，在 imperative world 执行行动，然后将结果装换成 Rx 中的 `Subject`。
 
 This isn't something that should be practiced often, and is a bad code smell, but you can do it.
+这是不应该被经常被实践的，并且是坏代码的例子，但是你可以做：
 
 ```swift
   let magicBeings: Observable<MagicBeing> = summonFromMiddleEarth()
@@ -792,6 +810,7 @@ This isn't something that should be practiced often, and is a bad code smell, bu
 ```
 
 Every time you do this, somebody will probably write this code somewhere
+每次你这么做，很有可能会有人这么写：
 
 ```swift
   kittens
@@ -802,6 +821,7 @@ Every time you do this, somebody will probably write this code somewhere
 ```
 
 so please try not to do this.
+所以请不要尝试这么做。
 
 ## Playgrounds
 
