@@ -771,7 +771,7 @@ This is simply 8
 ```
 
 ### Life happens
-### 生活就是这样
+### 权宜之计
 
 So what if it's just too hard to solve some cases with custom operators? You can exit the Rx monad, perform actions in imperative world, and then tunnel results to Rx again using `Subject`s.
 所以如果用自定义操作符解决问题太困难？你可以退出 Rx monad，在 imperative world 执行行动，然后将结果装换成 Rx 中的 `Subject`。
@@ -836,16 +836,22 @@ If you are unsure how exactly some of the operators work, [playgrounds](../Rx.pl
 **想要查看 playgrounds 例子的结果，请打开 `Assistant Editor`。你可以通过点击 `View > Assistant Editor > Show Assistant Editor` 打开 `Assistant Editor`**
 
 ## Error handling
+## 错误处理
 
 The are two error mechanisms.
+有两个错误机制。
 
 ### Asynchronous error handling mechanism in observables
+### observables的异步错误处理机制
 
 Error handling is pretty straightforward. If one sequence terminates with error, then all of the dependent sequences will terminate with error. It's usual short circuit logic.
+错误处理是非常直截了当的。如果一个序列终止于错误，那么所有想依赖的序列都会终止于错误。这是普通的短回路逻辑。
 
 You can recover from failure of observable by using `catch` operator. There are various overloads that enable you to specify recovery in great detail.
+你可以使用 `catch` 操作符接收失败的 observable。
 
 There is also `retry` operator that enables retries in case of errored sequence.
+如果有错误的序列还能 `retry` 操作符重试。
 
 ## Debugging Compile Errors
 
