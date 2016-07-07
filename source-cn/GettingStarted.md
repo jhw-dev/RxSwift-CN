@@ -707,7 +707,7 @@ There are two ways how you can create custom operators.
 这有两种创建自定义操作符的方法。
 
 #### Easy way
-#### 方便的方法
+#### 简单方法
 
 All of the internal code uses highly optimized versions of operators, so they aren't the best tutorial material. That's why it's highly encouraged to use standard operators.
 所有内部代码使用高度优化了的版本的操作符，所以他们不是最好的教程原料。这也是为什么高度鼓励使用标准操作符的原因。
