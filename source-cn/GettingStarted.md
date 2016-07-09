@@ -854,8 +854,10 @@ There is also `retry` operator that enables retries in case of errored sequence.
 如果有错误的序列还能 `retry` 操作符重试。
 
 ## Debugging Compile Errors
+## 调试编译错误
 
 When writing elegant RxSwift/RxCocoa code, you are probably relying heavily on compiler to deduce types of `Observable`s. This is one of the reasons why Swift is awesome, but it can also be frustrating sometimes.
+当编写大量RxSwift/RxCocoa的代码时，你可能重度依靠编译器去推测`Observable`s的类型。这也是为什么Swift很棒的原因之一，但是这有时候也会令人沮丧。
 
 ```swift
 images = word
@@ -869,6 +871,7 @@ images = word
 ```
 
 If compiler reports that there is an error somewhere in this expression, I would suggest first annotating return types.
+如果编译器报告说这个表达式什么地方存在一个错误，我会首先建议声明返回类型。
 
 ```swift
 images = word
@@ -882,6 +885,7 @@ images = word
 ```
 
 If that doesn't work, you can continue adding more type annotations until you've localized the error.
+如果不管用，那么你可以继续添加更多的类型声明，知道你定位了错误。
 
 ```swift
 images = word
@@ -895,8 +899,10 @@ images = word
 ```
 
 **I would suggest first annotating return types and arguments of closures.**
+**我建议首先声明闭包的返回类型和参数。
 
 Usually after you have fixed the error, you can remove the type annotations to clean up your code again.
+通常在你修正了错误之后，你也可以移除类型声明，清理你的代码。
 
 ## Debugging
 
