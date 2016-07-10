@@ -905,10 +905,13 @@ Usually after you have fixed the error, you can remove the type annotations to c
 通常在你修正了错误之后，你也可以移除类型声明，清理你的代码。
 
 ## Debugging
+## 调试
 
 Using debugger alone is useful, but usually using `debug` operator will be more efficient. `debug` operator will print out all events to standard output and you can add also label those events.
+单独使用调试器非常有用，但是常常使用 `debug` 操作符会更有效。 `debug` 操作符将所有事件打印到标准输出并且还可以给那些事件增加标签。
 
 `debug` acts like a probe. Here is an example of using it:
+`debug` 扮演一个类似探针。下面是使用他的例子：
 
 ```swift
 let subscription = myInterval(0.1)
@@ -926,6 +929,7 @@ subscription.dispose()
 ```
 
 will print
+将会打印
 
 ```
 [my probe] subscribed
@@ -945,6 +949,7 @@ Disposed
 ```
 
 You can also easily create your version of the `debug` operator.
+你可以简单地创建自己版本的 `debug` 操作符。
 
 ```swift
 extension ObservableType {
