@@ -979,10 +979,13 @@ extension ObservableType {
 ```
 
 ## Debugging memory leaks
+## 调试内存泄露
 
 In debug mode Rx tracks all allocated resources in a global variable `resourceCount`.
+调式模式中Rx使用一个全局变量 `resourceCount` 跟踪所有已分配的资源。
 
 In case you want to have some resource leak detection logic, the simplest method is just printing out `RxSwift.resourceCount` periodically to output.
+如果你想要一些资源泄露的探测逻辑，最简单的方法就是周期性地打印出 `RxSwift.resourceCount` 的值。
 
 ```swift
     /* add somewhere in
@@ -1001,11 +1004,20 @@ Most efficient way to test for memory leaks is:
 * navigate second time to your screen and use it
 * navigate back
 * observe final resource count
+最有效的测试内存泄露的方法是：
+* 导航到你的屏幕并且使用它
+* 导航回去
+* 观察初始资源数（resource count）
+* 第二次导航回你的屏幕并且使用它
+* 导航回去
+* 观察最终的资源数（resource count）
 
 In case there is a difference in resource count between initial and final resource counts, there might be a memory
 leak somewhere.
+假如初始资源数不同于最终资源数，那么就有可能是内存泄露。
 
 The reason why 2 navigations are suggested is because first navigation forces loading of lazy resources.
+为什么建议切换两次导航，是因为第一次导航会强制加载lazy资源。
 
 ## Variables
 
