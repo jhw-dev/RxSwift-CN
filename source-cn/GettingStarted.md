@@ -1020,14 +1020,19 @@ The reason why 2 navigations are suggested is because first navigation forces lo
 为什么建议切换两次导航，是因为第一次导航会强制加载lazy资源。
 
 ## Variables
+## 变量（Variables）
 
 `Variable`s represent some observable state. `Variable` without containing value can't exist because initializer requires initial value.
+`Variable`s 代表一些 observable 的状态。`Variable` 必须包含一个值，因为初始化需要一个初始值。
 
 Variable wraps a [`Subject`](http://reactivex.io/documentation/subject.html). More specifically it is a `BehaviorSubject`.  Unlike `BehaviorSubject`, it only exposes `value` interface, so variable can never terminate or fail.
+Variable 封装了一个 [`Subject`](http://reactivex.io/documentation/subject.html)。 更明确的说他是一个 `BehaviorSubject`。不同于 `BehaviorSubject`，它只暴露 `value` 接口，所以 variable 永远不会终止或者失败。
 
 It will also broadcast it's current value immediately on subscription.
+在订阅中它还会立刻广播它当前的值。
 
 After variable is deallocated, it will complete the observable sequence returned from `.asObservable()`.
+在 variable 被释放之后，他会从 `.asObservable()` 的返回完成 observable 序列。
 
 ```swift
 let variable = Variable(0)
@@ -1060,6 +1065,7 @@ print("End ---")
 ```
 
 will print
+将打印
 
 ```
 Before first subscription ---
@@ -1078,8 +1084,10 @@ Completed 2
 ## KVO
 
 KVO is an Objective-C mechanism. That means that it wasn't built with type safety in mind. This project tries to solve some of the problems.
+KVO是一个 Objective-C 机制。这意味着它不是构建在类型安全上的。这个项目尝试去解决一些这类问题。
 
 There are two built in ways this library supports KVO.
+下面是两种这个库支持的KVO构建方法：
 
 ```swift
 // KVO
@@ -1096,8 +1104,10 @@ extension NSObject {
 ```
 
 Example how to observe frame of `UIView`.
+如何观察 `UIView` 的frame的例子。
 
 **WARNING: UIKit isn't KVO compliant, but this will work.**
+**警告：UIKit不遵从KVO，但是它可以工作。**
 
 ```swift
 view
@@ -1120,10 +1130,14 @@ view
 ### `rx_observe`
 
 `rx_observe` is more performant because it's just a simple wrapper around KVO mechanism, but it has more limited usage scenarios
+`rx_observe` 是更高效的，因为他只是一个KVO机制的简单封装，但是也更局限了他的使用场景。
 
 * it can be used to observe paths starting from `self` or from ancestors in ownership graph (`retainSelf = false`)
+* 他可以被用来观察所有权图(`retainSelf = false`)中从 `self` 或者其祖先开始的路径
 * it can be used to observe paths starting from descendants in ownership graph (`retainSelf = true`)
+* 他可以被用来观察所有权图(`retainSelf = true `)中从其子类开始的路径
 * the paths have to consist only of `strong` properties, otherwise you are risking crashing the system by not unregistering KVO observer before dealloc.
+* 路径中不得不只能包含 `strong` 属性，否则你的系统就有崩溃的风险，因为没有在释放前注册KVO观察者。
 
 E.g.
 
@@ -1134,11 +1148,14 @@ self.rx_observe(CGRect.self, "view.frame", retainSelf: false)
 ### `rx_observeWeakly`
 
 `rx_observeWeakly` has somewhat slower than `rx_observe` because it has to handle object deallocation in case of weak references.
+`rx_observeWeakly` 比 `rx_observe` 有一点慢，因为如果是弱引用它不得不处理对象的释放。
 
 It can be used in all cases where `rx_observe` can be used and additionally
+它可以被用在所有 `rx_observe` 可以用的地方并且除此之外
 
 * because it won't retain observed target, it can be used to observe arbitrary object graph whose ownership relation is unknown
 * it can be used to observe `weak` properties
+* 因为它不会持有被观察目标的引用，所以它能被用来观察任意产权关系不明的对象图
 
 E.g.
 
@@ -1149,40 +1166,57 @@ someSuspiciousViewController.rx_observeWeakly(Bool.self, "behavingOk")
 ### Observing structs
 
 KVO is an Objective-C mechanism so it relies heavily on `NSValue`.
+KVO 是一个 Objective-C 机制，所以它中毒依赖 `NSValue`。
 
 **RxCocoa has built in support for KVO observing of `CGRect`, `CGSize` and `CGPoint` structs.**
+**RxCocoa 支持 `CGRect`，`CGSize` 和 `CGPoint` 结构的KVO。**
 
 When observing some other structures it is necessary to extract those structures from `NSValue` manually.
+当观察其他结构，需要手动从 `NSValue` 提取那些结构。
 
 [Here](../RxCocoa/Common/KVORepresentable+CoreGraphics.swift) are examples how to extend KVO observing mechanism and `rx_observe*` methods for other structs by implementing `KVORepresentable` protocol.
+[这里](../RxCocoa/Common/KVORepresentable+CoreGraphics.swift)是如何通过实现 `KVORepresentable` 协议，为其他结构扩展KVO观察机制和 `rx_observe*` 方法的例子。
 
 ## UI layer tips
+## UI层小贴士
 
 There are certain things that your `Observable`s need to satisfy in the UI layer when binding to UIKit controls.
+当绑定 UIKit 控制时，有一件很明确的事情是，你的 `Observable`s 需要在UI层令人满意。
 
 ### Threading
+### 线程
 
 `Observable`s need to send values on `MainScheduler`(UIThread). That's just a normal UIKit/Cocoa requirement.
+`Observable`s 需要在 `MainScheduler`(UIThread) 上发送值。 那只是一个普通的 UIKit/Cocoa 的需要。
 
 It is usually a good idea for you APIs to return results on `MainScheduler`. In case you try to bind something to UI from background thread, in **Debug** build RxCocoa will usually throw an exception to inform you of that.
+通常来说，你的 APIs 在 `MainScheduler` 上返回结果是一个不错的主意。假如你想尝试从后台线程中绑定东西到UI，在 **Debug** 构建RxCocoa时，通常会抛出一个异常来提醒你这点。
 
 To fix this you need to add `observeOn(MainScheduler.instance)`.
+你需要增加 `observeOn(MainScheduler.instance)` 来修正这点。
 
 **NSURLSession extensions don't return result on `MainScheduler` by default.**
+**NSURLSession扩展默认不在 `MainScheduler` 上返回结果。**
 
 ### Errors
 
 You can't bind failure to UIKit controls because that is undefined behavior.
+你不能绑定失败结果到 UIKit 控制，因为那是一个未定义的行为。
 
 If you don't know if `Observable` can fail, you can ensure it can't fail using `catchErrorJustReturn(valueThatIsReturnedWhenErrorHappens)`, **but after an error happens the underlying sequence will still complete**.
+如果你不知道 `Observable` 是否会失败，你可以使用 `catchErrorJustReturn(valueThatIsReturnedWhenErrorHappens)` 来确保他不会失败，**但是当一个错误发生之后，之后的序列还是会完成**
 
 If the wanted behavior is for underlying sequence to continue producing elements, some version of `retry` operator is needed.
+如果想要之后的序列继续产生元素，那就需要 `retry` 操作符。
 
 ### Sharing subscription
+### 分享订阅
 
 You usually want to share subscription in the UI layer. You don't want to make separate HTTP calls to bind the same data to multiple UI elements.
+你通常想要在UI层分享订阅。你不需要去调用不同的HTTP请求来绑定同样的数据到多个UI元素上去。
 
 Let's say you have something like this:
+你想要下面这些：
 
 ```swift
 let searchResults = searchText
@@ -1198,10 +1232,13 @@ let searchResults = searchText
 ```
 
 What you usually want is to share search results once calculated. That is what `shareReplay` means.
+通常你需要的是在计算后分享搜索结果。那就是 `shareReplay` 的意义。
 
 **It is usually a good rule of thumb in the UI layer to add `shareReplay` at the end of transformation chain because you really want to share calculated results. You don't want to fire separate HTTP connections when binding `searchResults` to multiple UI elements.**
+**对于UI层通常来说在转换链的最后添加 `shareReplay` 是一个好的规则，因为你实在想要分享计算后的结果。当时绑定 `searchResults` 到多个UI元素时，你不必出发单独的HTTP连接。
 
 **Also take a look at `Driver` unit. It is designed to transparently wrap those `shareReply` calls, make sure elements are observed on main UI thread and that no error can be bound to UI.**
+**另外看一下 `Driver` 单元。它被设计用来直白的封装那些 `shareReply` 调用，确保元素被观察在UI主线程并且不会有错误被绑定到UI**
 
 ## Making HTTP requests
 
