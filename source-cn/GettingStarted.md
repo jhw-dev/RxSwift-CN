@@ -1241,20 +1241,26 @@ What you usually want is to share search results once calculated. That is what `
 **另外看一下 `Driver` 单元。它被设计用来直白的封装那些 `shareReply` 调用，确保元素被观察在UI主线程并且不会有错误被绑定到UI**
 
 ## Making HTTP requests
+## 制作 HTTP 请求
 
 Making http requests is one of the first things people try.
+制作 http 请求是大家第一件要尝试的事情之一。
 
 You first need to build `NSURLRequest` object that represents the work that needs to be done.
+你首先需要构建 `NSURLRequest` 对象。
 
 Request determines is it a GET request, or a POST request, what is the request body, query parameters ...
+请求决定了它是一个 GET 请求或者是 POST 请求，请求体是什么，查询参数是什么 ...
 
 This is how you can create a simple GET request
+下面是你如何能创建一个简单的 GET 请求
 
 ```swift
 let request = NSURLRequest(URL: NSURL(string: "http://en.wikipedia.org/w/api.php?action=parse&page=Pizza&format=json")!)
 ```
 
 If you want to just execute that request outside of composition with other observables, this is what needs to be done.
+如果你仅仅想用其他 observables 执行请求外部成分，下面就是你需要做的。
 
 ```swift
 let responseJSON = NSURLSession.sharedSession().rx_JSON(request)
@@ -1276,8 +1282,10 @@ cancelRequest.dispose()
 ```
 
 **NSURLSession extensions don't return result on `MainScheduler` by default.**
+**NSURLSession 扩展默认不在 `MainScheduler` 上返回结果。**
 
 In case you want a more low level access to response, you can use:
+假如你想要一个更低级的响应访问，你可以使用：
 
 ```swift
 NSURLSession.sharedSession().rx_response(myNSURLRequest)
@@ -1301,8 +1309,10 @@ NSURLSession.sharedSession().rx_response(myNSURLRequest)
     }
 ```
 ### Logging HTTP traffic
+### HTTP 通信日志
 
 In debug mode RxCocoa will log all HTTP request to console by default. In case you want to change that behavior, please set `Logging.URLRequests` filter.
+在调试模式中，RxCocoa 默认将会记录所有的 HTTP 请求日志到控制台上。如果你要改变这个行为，请设置 `Logging.URLRequests` 筛选器。
 
 ```swift
 // read your own configuration
@@ -1322,8 +1332,11 @@ public struct Logging {
 ## RxDataSources
 
 ... is a set of classes that implement fully functional reactive data sources for `UITableView`s and `UICollectionView`s.
+... 是一个实现 `UITableView`s 和 `UICollectionView` 全部功能的交互数据源的类集合。
 
 
 RxDataSources are bundled [here](https://github.com/RxSwiftCommunity/RxDataSources).
+RxDataSources 开源在[这](https://github.com/RxSwiftCommunity/RxDataSources)。
 
 Fully functional demonstration how to use them is included in the [RxExample](../RxExample) project.
+如何使用它们的全部功能示范在 [RxExample](../RxExample) 项目中。
