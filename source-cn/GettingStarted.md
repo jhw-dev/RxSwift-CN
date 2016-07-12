@@ -1323,6 +1323,7 @@ public struct Logging {
 
 ... is a set of classes that implement fully functional reactive data sources for `UITableView`s and `UICollectionView`s.
 
+
 RxDataSources are bundled [here](https://github.com/RxSwiftCommunity/RxDataSources).
 
 Fully functional demonstration how to use them is included in the [RxExample](../RxExample) project.
