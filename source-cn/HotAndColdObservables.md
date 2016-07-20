@@ -1,18 +1,18 @@
-Hot and Cold Observables
+热 Observables 和冷 Observables
 ========================
 
-IMHO, I would suggest to more think of this as property of sequences and not separate types because they are represented by the same abstraction that fits them perfectly, `Observable` sequence.
+本人愚见，我更建议把这个作为序列的属性而不是独立的类型，因为他们表示的抽象概念完美相符，`Observable` 序列。
 
-This is a definition from ReactiveX.io
+这是来自 ReactiveX.io 的定义
 
-> When does an Observable begin emitting its sequence of items? It depends on the Observable. A “hot” Observable may begin emitting items as soon as it is created, and so any observer who later subscribes to that Observable may start observing the sequence somewhere in the middle. A “cold” Observable, on the other hand, waits until an observer subscribes to it before it begins to emit items, and so such an observer is guaranteed to see the whole sequence from the beginning.
+> 一个 Observable 什么时候开始发生它序列的元素？这依靠 Observable。一个“热的” Observable 一旦创建完了就会发射元素，所以那些之后订阅 Observable 的观察者可以在过程中间开始观察序列。一个“冷的” Observable，直到一个观察者订阅了它之后才开始发射它的元素，并且观察者能被保证看到整个从到开始的序列。
 
-| Hot Observables                                                                                         | Cold observables                                                              |
+| 热 Observables                                                                                        | 冷 Observables                                                              |
 |---------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-| ... are sequences                                                                                       | ... are sequences                                                             |
-| Use resources ("produce heat") no matter if there is any observer subscribed.                           | Don't use resources (don't produce heat) until observer subscribes.           |
-| Variables / properties / constants, tap coordinates, mouse coordinates, UI control values, current time | Async operations, HTTP Connections, TCP connections, streams                  |
-| Usually contains ~ N elements                                                                           | Usually contains ~ 1 element                                                  |
-| Sequence elements are produced no matter if there is any observer subscribed.                           | Sequence elements are produced only if there is a subscribed observer.        |
-| Sequence computation resources are usually shared between all of the subscribed observers.              | Sequence computation resources are usually allocated per subscribed observer. |
-| Usually stateful                                                                                        | Usually stateless                                                             |
+| ... 是序列                                                                                       | ... 是序列                                                             |
+| 使用资源（“产生热”）不管是否有观察者订阅。                           | 不使用资源（不产生热）直到有观察者订阅。         |
+| 变量 / 属性 / 常亮, 点击坐标, 鼠标坐标, UI控制值, 当前时间 | 异步操作, HTTP 连接, TCP 连接, 流|
+| 通常包含 ~ N 元素                                                                           | 通常包含 ~ 1 元素                                                  |
+| 不管是否观察者订阅都产生序列元素。                           | 当且仅当被观察者订阅才产生元素。        |
+| 序列计算资源通常分享于所有订阅了的观察者之间。              | 序列计算资源通常被单独分配给每一个订阅了的观察者。 |
+| 通常有状态                                                                                        | 通常无状态                                                             |
