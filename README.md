@@ -14,7 +14,7 @@
 | [ExampleApp.md](source/ExampleApp.md) |[ExampleApp.md](source-cn/ExampleApp.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [Examples.md](source/Examples.md) ||[Chawler](https://github.com/chawler)||
 | [GettingStarted.md](source/GettingStarted.md) |[GettingStarted.md](source-cn/GettingStarted.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
-| [HotAndColdObservables.md](source/HotAndColdObservables.md) ||||
+| [HotAndColdObservables.md](source/HotAndColdObservables.md) |[HotAndColdObservables.md](source-cn/HotAndColdObservables.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [Installation.md](source/Installation.md) |[Installation.md](source-cn/Installation.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [IssueTemplate.md](source/IssueTemplate.md) ||||
 | [Linux.md](source/Linux.md) ||||
