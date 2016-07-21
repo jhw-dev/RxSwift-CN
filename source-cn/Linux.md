@@ -1,9 +1,9 @@
 Linux
 =====
 
-We've made a proof of concept for Linux.
+我们为 Linux 做了一个试验。
 
-To test it, create `Package.swift` in your test directory with the following content:
+为了测试它，在你的测试目录中按如下内容创建 `Package.swift`：
 
 ```
 import PackageDescription
@@ -16,16 +16,16 @@ let package = Package(
 )
 ```
 
-What works:
-* Distribution using Swift Package Manager
-* Single Threaded mode (CurrentThreadScheduler)
-* Half of the unit tests are passing.
-* Projects that can be compiled and "used":
-    * RxSwift
-    * RxBlocking
-    * RxTests
+有哪些是可以工作的：
+* 使用 Swift 包管理分配
+* 单线程模式 （当前线程调度）
+* 一般的单元测试通过的。
+* 项目能被编译和“使用”：
+	* RxSwift
+	* RxBlocking
+	* RxTests
 
-What doesn't work:
-* Schedulers - because they are dependent on https://github.com/apple/swift-corelibs-libdispatch and it still hasn't been released
-* Multithreading - still no access to c11 locks
-* For some reason it looks like Swift compiler generates wrong code when using `ErrorType` on `Linux`, so don't use errors, otherwise you can get weird crashes.
+有哪些是不工作的：
+* 调度器 - 因为他们依赖 https://github.com/apple/swift-corelibs-libdispatch 并且它还没被发布
+* 多线程 - 依然不能使用 c11 锁
+* 当在 `Linux` 使用 `ErrorType` 出于某些原因它看起来像 Swift 编译器生成了错误的代码， 所以不能使用 errors， 否则你会得到很奇怪的崩溃。
