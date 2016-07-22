@@ -17,7 +17,7 @@
 | [HotAndColdObservables.md](source/HotAndColdObservables.md) |[HotAndColdObservables.md](source-cn/HotAndColdObservables.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [Installation.md](source/Installation.md) |[Installation.md](source-cn/Installation.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [IssueTemplate.md](source/IssueTemplate.md) ||||
-| [Linux.md](source/Linux.md) ||||
+| [Linux.md](source/Linux.md) |[Linux.md](source-cn/Linux.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [MathBehindRx.md](source/MathBehindRx.md) ||||
 | [Migration.md](source/Migration.md) ||||
 | [NewFeatureRequestTemplate.md](source/NewFeatureRequestTemplate.md) ||||
