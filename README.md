@@ -21,7 +21,7 @@
 | [MathBehindRx.md](source/MathBehindRx.md) ||||
 | [Migration.md](source/Migration.md) ||||
 | [NewFeatureRequestTemplate.md](source/NewFeatureRequestTemplate.md) ||||
-| [Playgrounds.md](source/Playgrounds.md) ||||
+| [Playgrounds.md](source/Playgrounds.md) |[Playgrounds.md](source-cn/Playgrounds.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [Schedulers.md](source/Schedulers.md) ||||
 | [Subjects.md](source/Subjects.md) ||||
 | [Tips.md](source/Tips.md) ||||
