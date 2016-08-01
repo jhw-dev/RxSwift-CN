@@ -18,7 +18,7 @@
 | [Installation.md](source/Installation.md) |[Installation.md](source-cn/Installation.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [IssueTemplate.md](source/IssueTemplate.md) ||||
 | [Linux.md](source/Linux.md) |[Linux.md](source-cn/Linux.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
-| [MathBehindRx.md](source/MathBehindRx.md) ||||
+| [MathBehindRx.md](source/MathBehindRx.md) |[MathBehindRx.md](source-cn/MathBehindRx.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [Migration.md](source/Migration.md) ||||
 | [NewFeatureRequestTemplate.md](source/NewFeatureRequestTemplate.md) ||||
 | [Playgrounds.md](source/Playgrounds.md) |[Playgrounds.md](source-cn/Playgrounds.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
@@ -27,8 +27,8 @@
 | [Tips.md](source/Tips.md) |[Tips.md](source-cn/Tips.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [UnitTests.md](source/UnitTests.md) ||||
 | [Units.md](source/Units.md) ||||
-| [Warnings.md](source/Warnings.md) ||||
-| [Why.md](source/Why.md) ||||
+| [Warnings.md](source/Warnings.md) |[Warnings.md](source/Warnings.md) |[Edison Hsu](https://github.com/Edison-Hsu)||
+| [Why.md](source/Why.md) |[Why.md](source-cn/Why.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 
 ## 如何参与翻译流程
 1. 查看上表和pull request 中还空缺的位置（例如API.md中翻译人是空白或pr中未有人认领）
