@@ -18,11 +18,13 @@ If you want to perform work on different scheduler just use `observeOn(scheduler
 如果你想要在不同的调度者上执行工作，只需要调用 `observeOn(scheduler)` 操作符。
 
 You would usually use `observeOn` a lot more often then `subscribeOn`.
-
+你将经常使用 `observeOn` 大大多于使用 `subscribeOn`。
 
 In case `observeOn` isn't explicitly specified, work will be performed on which ever thread/scheduler elements are generated.
+假如 `observeOn` 没有显示指定， 那么任务将被执行在生成元素的调度器或线程上。
 
 Example of using `observeOn` operator
+使用 `observeOn` 操作符的例子
 
 ```
 sequence1
@@ -37,6 +39,7 @@ sequence1
 ```
 
 If you want to start sequence generation (`subscribe` method) and call dispose on a specific scheduler, use `subscribeOn(scheduler)`.
+如果你需要开始序列生成（ `subscribe` 方法）并且调用处置方法在特定的调度器上，使用 `subscribeOn(scheduler)`。
 
 In case `subscribeOn` isn't explicitly specified, `subscribe` method will be called on the same thread/scheduler that `subscribeNext` or `subscribe` is called.
 
