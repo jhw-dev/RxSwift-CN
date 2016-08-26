@@ -42,18 +42,25 @@ If you want to start sequence generation (`subscribe` method) and call dispose o
 如果你需要开始序列生成（ `subscribe` 方法）并且调用处置方法在特定的调度器上，使用 `subscribeOn(scheduler)`。
 
 In case `subscribeOn` isn't explicitly specified, `subscribe` method will be called on the same thread/scheduler that `subscribeNext` or `subscribe` is called.
+如果 `subscribeOn` 没有显示指定，`subscribe` 方法会被调用在执行 `subscribeNext` or `subscribe` 的同一个线程或者调度器上。
 
 In case `subscribeOn` isn't explicitly specified, `dispose` method will be called on the same thread/scheduler that initiated disposing.
+如果 `subscribeOn` 没有显示指定，`dispose ` 方法会被调用在执行初始化处置（disposing）的线程和调度器上。
 
 In short, if no explicit scheduler is chosen, those methods will be called on current thread/scheduler.
+简而言之，如果没有显示的调度器被选择，那些方法会被调用在相同的线程或调度器上。
 
 # Serial vs Concurrent Schedulers
+# 串行和并发调度器
 
 Since schedulers can really be anything, and all operators that transform sequences need to preserve additional [implicit guarantees](GettingStarted.md#implicit-observable-guarantees), it is important what kind of schedulers are you creating.
+由于调度器真的能够成为任何东西，并且所有改变序列的操作符需要保留格外的[隐性惯例](GettingStarted.md#implicit-observable-guarantees), 你创建什么类型的调度器是非常重要的。
 
 In case scheduler is concurrent, Rx's `observeOn` and `subscribeOn` operators will make sure everything works perfect.
+假如调度器是并发的，Rx的 `observeOn` 和 `subscribeOn` 操作符将会确保所有工作正常。
 
 If you use some scheduler that for which Rx can prove that it's serial, it will able to perform additional optimizations.
+如果你使用一些调度器
 
 So far it only performing those optimizations for dispatch queue schedulers.
 
