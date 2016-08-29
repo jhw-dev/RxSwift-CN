@@ -20,7 +20,7 @@
 | [MathBehindRx.md](source/MathBehindRx.md) |[MathBehindRx.md](source-cn/MathBehindRx.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [Migration.md](source/Migration.md) ||||
 | [Playgrounds.md](source/Playgrounds.md) |[Playgrounds.md](source-cn/Playgrounds.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
-| [Schedulers.md](source/Schedulers.md) ||||
+| [Schedulers.md](source/Schedulers.md) |[Schedulers.md](source-cn/Schedulers.md) |[Edison Hsu](https://github.com/Edison-Hsu)||
 | [Subjects.md](source/Subjects.md) |[Subjects.md](source-cn/Subjects.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [Tips.md](source/Tips.md) |[Tips.md](source-cn/Tips.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [UnitTests.md](source/UnitTests.md) ||||
