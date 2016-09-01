@@ -92,10 +92,15 @@ Physics units define operations by using corresponding number operations. E.g.
 * First, convert the unit to **numbers** and **apply** `/` **operator** `11 / 0.5 = 22`
 * Then, calculate the unit (m / s)
 * Lastly, combine the result = 22 m / s
+* 首先，转换到**数字**单位，并且**应用** `/` **操作符** `11 / 0.5 = 22`
+* 然后，计算单位（m / s）
+* 最后，组合结果 = 22 m / s
 
 Rx units define operations by using corresponding observable sequence operations (this is how operators work internally). E.g.
+Rx 单位通过使用一致的 observable 序列操作符定义操作（这就是内部操作符如何运行的），例如
 
 The `map` operation on `Driver` is defined using the `map` operation on its observable sequence.
+`Driver` 上的 `map` 操作符被定义为在其 observable 序列上使用  `map` 操作符。
 
 ```swift
 let d: Driver<Int> = Drive.just(11)
@@ -103,11 +108,13 @@ driver.map { $0 / 0.5 } = ...
 ```
 
 * First, convert `Driver` to **observable sequence** and **apply** `map` **operator**
+* 首先，转换 `Driver` 为 **observable 序列** 并且 **使用** `map` **操作符**
 ```swift
 let mapped = driver.asObservable().map { $0 / 0.5 } // this `map` is defined on observable sequence
 ```
 
 * Then, combine that to get the unit value
+* 然后，组合结果来获得单位值
 ```swift
 let result = Driver(mapped)
 ```
@@ -120,12 +127,27 @@ There is a set of basic interesting properties for observable sequences in `RxCo
     * Subscribe on main scheduler
     * Sharing side effects
 
+在物理中有一系列基本单位[(`m`, `kg`, `s`, `A`, `K`, `cd`, `mol`)](https://en.wikipedia.org/wiki/SI_base_unit)是正交的。<br/>
+在 `RxCocoa` 中有一系列有趣的 observable 序列基础属性是正交的。
+	
+	* 不能错误退出
+	* 在主调度器上观察
+	* 订阅在主调度器上
+	* 分享副作用
+
 Derived units in physics sometimes have special names.<br/>
 E.g.
 ```
 N (Newton) = kg * m / s / s
 C (Coulomb) = A * s
 T (Tesla) = kg / A / s / s
+```
+物理中派生的单位有时有专有的名称。<br/>
+例如：
+```
+N (牛顿) = kg * m / s / s
+C (库仑) = A * s
+T (特斯拉) = kg / A / s / s
 ```
 
 Rx derived units also have special names.<br/>
@@ -134,6 +156,14 @@ E.g.
 Driver = (can't error out) * (observe on main scheduler) * (sharing side effects)
 ControlProperty = (sharing side effects) * (subscribe on main scheduler)
 Variable = (can't error out) * (sharing side effects)
+```
+
+Rx 派生的单位也有专有的名称。<br/>
+例如：
+```
+Driver = (不能错误退出) * (在主调度器上观察) * (分享副作用)
+ControlProperty = (分享副作用) * (订阅在主调度器上)
+Variable = (不能错误退出) * (分享副作用)
 ```
 
 Conversion between different units in physics is done with the help of operators defined on numbers `*`, `/`.<br/>
@@ -147,7 +177,16 @@ Observe on main scheduler = observeOn(MainScheduler.instance)
 Subscribe on main scheduler = subscribeOn(MainScheduler.instance)
 Sharing side effects = share* (one of the `share` operators)
 ```
+物理中转换不同的单位通过在数学上的操作符定义的 `*`, `/`。<br/>
+Rx 中转换不同的单位通过 observable 序列操作符的帮助。
 
+例如：
+```
+不能错误退出 = catchError
+在主调度器上观察 = observeOn(MainScheduler.instance)
+订阅在主调度器上 = subscribeOn(MainScheduler.instance)
+分享副作用 = share* (one of the `share` operators)
+```
 
 ## RxCocoa units
 
