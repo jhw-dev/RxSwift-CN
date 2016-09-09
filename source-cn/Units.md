@@ -190,50 +190,72 @@ Rx 中转换不同的单位通过 observable 序列操作符的帮助。
 
 ## RxCocoa units
 
-### Driver unit
+### Driver unit 驱动单元
 
 * Can't error out
 * Observe on main scheduler
 * Sharing side effects (`shareReplayLatestWhileConnected`)
+* 不能错误退出
+* 在主调度器上观察
+* 分享副作用 (`shareReplayLatestWhileConnected`)
 
-### ControlProperty / ControlEvent
+### ControlProperty / ControlEvent  控制属性 / 控制事件
 
 * Can't error out
 * Subscribe on main scheduler
 * Observe on main scheduler
 * Sharing side effects
+* 不能错误退出
+* 在主调度器上订阅
+* 在主调度器上观察
+* 分享副作用
 
-### Variable
+### Variable  变量
 
 * Can't error out
 * Sharing side effects
+* 不能错误退出
+* 分享副作用
 
-## Driver
+## Driver  驱动
 
 This is the most elaborate unit. Its intention is to provide an intuitive way to write reactive code in the UI layer.
+这是非常精心计划的单元。它的目的是提供一个直接的方式去写 UI 层的响应式代码。
 
-### Why it's named Driver
+### Why it's named Driver  为什么被命名为驱动（Driver）
 
 Its intended use case was to model sequences that drive your application.
+它的目标使用场景是模型化驱动你应用的序列。
 
 E.g.
 * Drive UI from CoreData model
 * Drive UI using values from other UI elements (bindings)
 ...
 
+例如：
+* 从 CoreData 模型驱动 UI
+* 使用从其他 UI 元素的值驱动 UI （bindings）
+...
 
 Like normal operating system drivers, in case a sequence errors out, your application will stop responding to user input.
 
+类似普通的操作系统驱动，假如一个序列错误退出， 你的应用将停止用户输入的相应。
+
 It is also extremely important that those elements are observed on the main thread because UI elements and application logic are usually not thread safe.
 
+那些被观察在主线程的元素还非常的重要因为 UI 元素和应用逻辑通常是线程不安全的。
+
 Also, `Driver` unit builds an observable sequence that shares side effects.
+
+另外， `驱动(Drive)` 单元构建了一个 observable 分享副作用的序列。
 
 E.g.
 
 
-### Practical usage example
+### Practical usage example  实际用例
 
 This is a typical beginner example.
+这是一个典型的开始例子。
 
 ```swift
 let results = query.rx_text
@@ -255,14 +277,26 @@ results
 ```
 
 The intended behavior of this code was to:
+
 * Throttle user input
 * Contact server and fetch a list of user results (once per query)
 * Bind the results to two UI elements: results table view and a label that displays the number of results
 
+这个代码的意图是：
+
+* Throttle 用户输入
+* 联系服务器并且获取一个用户列表（每一个请求）
+* 绑定结果到两个 UI 元素：显示结果到 tableView 和显示有多少条记录的标签。
+
 So, what are the problems with this code?:
+
 * If the `fetchAutoCompleteItems` observable sequence errors out (connection failed or parsing error), this error would unbind everything and the UI wouldn't respond any more to new queries.
 * If `fetchAutoCompleteItems` returns results on some background thread, results would be bound to UI elements from a background thread which could cause non-deterministic crashes.
 * Results are bound to two UI elements, which means that for each user query, two HTTP requests would be made, one for each UI element, which is not the intended behavior.
+
+那么，这个代码有什么问题？：
+
+* 如果 `fetchAutoCompleteItems` 
 
 A more appropriate version of the code would look like this:
 
