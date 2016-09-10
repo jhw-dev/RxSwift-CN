@@ -294,11 +294,15 @@ So, what are the problems with this code?:
 * If `fetchAutoCompleteItems` returns results on some background thread, results would be bound to UI elements from a background thread which could cause non-deterministic crashes.
 * Results are bound to two UI elements, which means that for each user query, two HTTP requests would be made, one for each UI element, which is not the intended behavior.
 
-那么，这个代码有什么问题？：
+那么，这个代码有什么问题？
 
-* 如果 `fetchAutoCompleteItems` 
+* 如果 `fetchAutoCompleteItems` observable 序列错误退出（连接失败或者处理错误），这个错误将会解绑一切并且 UI 不会响应更多的请求。
+* 如果 `fetchAutoCompleteItems` 在一些后台线程返回结果，结果会从后台线程被绑定到 UI 元素，而这会引起不确定的奔溃。
+* 结果被绑定到两个 UI 元素，这意味着每个用户查询会制造两个HTTP请求对应两个 UI 元素，这并不是预期的行为。
 
 A more appropriate version of the code would look like this:
+
+更合适的版本的代码应该看起来像如下：
 
 ```swift
 let results = query.rx_text
@@ -325,7 +329,11 @@ results
 
 Making sure all of these requirements are properly handled in large systems can be challenging, but there is a simpler way of using the compiler and units to prove these requirements are met.
 
+在大型系统中确认所有这些要求被合适的处理是有挑战的，但是使用编译器和单位去证明这些要求被满足会有更简单方法。
+
 The following code looks almost the same:
+
+下面代码看起来大致一样：
 
 ```swift
 let results = query.rx_text.asDriver()        // This converts a normal sequence into a `Driver` sequence.
@@ -349,7 +357,11 @@ results
 
 So what is happening here?
 
+所以这里发生了什么？
+
 This first `asDriver` method converts the `ControlProperty` unit to a `Driver` unit.
+
+第一个 `asDriver` 方法转换 `ControlProperty` 单元成为一个 `Driver` 单元。
 
 ```swift
 query.rx_text.asDriver()
@@ -357,18 +369,30 @@ query.rx_text.asDriver()
 
 Notice that there wasn't anything special that needed to be done. `Driver` has all of the properties of the `ControlProperty` unit, plus some more. The underlying observable sequence is just wrapped as a `Driver` unit, and that's it.
 
+注意这不需要任何其他的操作。`驱动（Driver）`有所有 `ControlProperty` 单元的属性，并且添加了其他。下面的 observable 序列只是被包装了作为 `驱动Driver` 单元。
+
 The second change is:
+第二个改变是：
 
 ```swift
 .asDriver(onErrorJustReturn: [])
 ```
 
 Any observable sequence can be converted to `Driver` unit, as long as it satisfies 3 properties:
+
 * Can't error out
 * Observe on main scheduler
 * Sharing side effects (`shareReplayLatestWhileConnected`)
 
 So how do you make sure those properties are satisfied? Just use normal Rx operators. `asDriver(onErrorJustReturn: [])` is equivalent to following code.
+
+任何 observable 序列都能被转换成 `Driver驱动` 单元，只要它满足3个属性：
+
+* 不能错误退出
+* 在主调度器上观察
+* 分享副作用(`shareReplayLatestWhileConnected`)
+
+所以你如何确认这些属性被满足？仅使用 Rx 操作。`asDriver(onErrorJustReturn: [])` 等价于如下代码：
 
 ```
 let safeSequence = xs
@@ -383,3 +407,9 @@ The final piece is using `drive` instead of using `bindTo`.
 `drive` is defined only on the `Driver` unit. This means that if you see `drive` somewhere in code, that observable sequence can never error out and it observes on the main thread, which is safe for binding to a UI element.
 
 Note however that, theoretically, someone could still define a `drive` method to work on `ObservableType` or some other interface, so to be extra safe, creating a temporary definition with `let results: Driver<[Results]> = ...` before binding to UI elements would be necessary for complete proof. However, we'll leave it up to the reader to decide whether this is a realistic scenario or not.
+
+最终的片段是使用 `drive` 代替使用 `bindTo`。
+
+`dive` 仅在 `Driver驱动` 上被定义。这意味着如果你看见 `drive` 出现在代码中，observable 序列从不错误退出并且它在主线程上观察，这样绑定一个 UI 元素是安全的。
+
+然而，理论上，有人可以定义一个 `drive` 方法工作在 `ObservableType` 上或者另一些接口，所以为了额外的安全，在绑定 UI 元素之前会用 `let results: Driver<[Results]> = ...` 创建一个临时的定义，为了完全验证这是必要的。然而，我们将留给读者去决定这是否是一个现实的情况。
