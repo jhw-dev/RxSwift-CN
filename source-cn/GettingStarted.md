@@ -124,7 +124,7 @@ protocol ObserverType {
 **为了取消生产序列元素和立刻释放资源，可以在返回的订阅上调用 `dispose` 方法**
 
 If a sequence terminates in finite time, not calling `dispose` or not using `addDisposableTo(disposeBag)` won't cause any permanent resource leaks. However, those resources will be used until the sequence completes, either by finishing production of elements or returning an error.
-如果一个序列终止于有限次数，不调用 `dispose` 或者不使用 `addDisposableTo(disposeBag)` 将不会引起任何永久的资源泄露。然而，那些资源将被使用直到序列完成，或通过完成元素生产或返回一个错误。
+如果一个序列终止于有限次数，不调用 `dispose` 或者不使用 `addDisposableTo(disposeBag)` 将不会引起任何永久的资源泄露。无论如何，当这个序列完成时，这些资源都会被释放，或者通过处理完所有元素，或通过返回一个错误。
 
 If a sequence does not terminate in some way, resources will be allocated permanently unless `dispose` is called manually, automatically inside of a `disposeBag`, `takeUntil` or in some other way.
 如果一个序列由于某些原因没有终止，资源将会被永久分配，除非 `dispose` 被手动调用，自动加入一个 `disposeBag`, `takeUntil` 或一些其他方法。
