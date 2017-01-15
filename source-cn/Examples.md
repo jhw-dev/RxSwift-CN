@@ -1,18 +1,19 @@
 Examples
 ========
 
-1. [Calculated variable](#calculated-variable)
-1. [Simple UI bindings](#simple-ui-bindings)
-1. [Autocomplete](#autocomplete)
-1. [more examples](../RxExample)
+1. [计算变量](#计算变量)
+1. [简单 UI 绑定](#simple-ui-bindings)
+1. [自动完成](#autocomplete)
+1. [更多例子](../RxExample)
 1. [Playgrounds](Playgrounds.md)
 
-## Calculated variable
+## 计算变量
 
-First, let's start with some imperative code.
-The purpose of this example is to bind the identifier `c` to a value calculated from `a` and `b` if some condition is satisfied.
+首先，让我们从一些必要的代码开始。
 
-Here is the imperative code that calculates the value of `c`:
+这个例子的目的是如果条件满足，将 `a` 和 `b` 计算后的值绑定到 `c` 上。
+
+下面就是必要的代码示例：
 
 ```swift
 // this is standard imperative code
@@ -25,16 +26,16 @@ if a + b >= 0 {
 }
 ```
 
-The value of `c` is now `3 is positive`. However, if we change the value of `a` to `4`, `c` will still contain the old value.
+`c` 现在的值是 `3 is positive`。然而，如果我们改变了 `a` 的值为 `4`, `c` 依然还是老的值。
 
 ```swift
 a = 4           // `c` will still be equal to "3 is positive" which is not good
                 // we want `c` to be equal to "6 is positive" since 4 + 2 = 6
 ```
 
-This is not the desired behavior.
+这并不是想要的行为。
 
-This is the improved logic using RxSwift:
+下面是使用 RxSwift 改进逻辑后的代码：
 
 ```swift
 let a /*: Observable<Int>*/ = Variable(1)   // a = 1
@@ -70,12 +71,12 @@ b.value = -8                                 // doesn't print anything
 // and `{ print($0) }` won't be called.
 ```
 
-## Simple UI bindings
+## 简单 UI 绑定
 
-* Instead of binding to variables, let's bind to `UITextField` values using the `rx_text` property
-* Next, `map` the `String` into an `Int` and determine if the number is prime using an async API
-* If the text is changed before the async call completes, a new async call will replace it via `concat`
-* Bind the results to a `UILabel`
+* 不绑定数值，让我们用 `UITextField` 的 `rx_text` 绑定数值
+* 然后，使用 `map` 把 `String` 转换到 `Int` 并且使用异步 API 判断这个数字是否是素数
+* 如果文本在异步调用完成之前改变了，一个新的异步调用会通过 `concat` 代替他
+* 将结果绑定到 `UILabel`
 
 ```swift
 let subscription/*: Disposable */ = primeTextField.rx_text      // type is Observable<String>
@@ -94,16 +95,15 @@ primeTextField.text = "43"
 subscription.dispose()
 ```
 
-All of the operators used in this example are the same operators used in the first example with variables. There's nothing special about it.
+这个例子中使用的所有操作符是和第一个例子中使用的操作相同的。
 
-## Autocomplete
+## 自动完成
 
-If you are new to Rx, the next example will probably be a little overwhelming at first. However, it's here to demonstrate how RxSwift code looks in the real-world.
+如果你是 Rx 的新手，那么下面的例子在一开始可能会有一点点难以应对。但是这被用来展示 RxSwift 的代码在真实世界如何被看待。
 
-This example contains complex async UI validation logic with progress notifications.
-All operations are cancelled the moment `disposeBag` is deallocated.
+这个例子包含复杂的异步 UI 进度通知验证逻辑。当 `disposeBag` 被释放时，所有操作符会被取消。
 
-Let's give it a shot.
+让我们赶快来看一下代码：
 
 ```swift
 // bind UI control values directly
@@ -165,6 +165,6 @@ self.usernameOutlet.rx_text
     .addDisposableTo(disposeBag)
 ```
 
-It doesn't get any simpler than that. There are [more examples](../RxExample) in the repository, so feel free to check them out.
+这代码是最简单的。仓库中还有[很多其他的例子](../RxExample)，所以尽情查看他们吧。
 
-They include examples on how to use Rx in the context of MVVM pattern or without it.
+这些例子包含如何使用 Rx 在 MVVM 设计模式的上下文，或者没有 MVVM。
