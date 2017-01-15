@@ -12,7 +12,7 @@
 | [ComparisonWithOtherLibraries.md](source/ComparisonWithOtherLibraries.md) |[ComparisonWithOtherLibraries.md](source-cn/ComparisonWithOtherLibraries.md)|[zerob13](https://github.com/zerob13)|[Edison Hsu](https://github.com/Edison-Hsu)|
 | [DesignRationale.md](source/DesignRationale.md) |[DesignRationale.md](source-cn/DesignRationale.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [ExampleApp.md](source/ExampleApp.md) |[ExampleApp.md](source-cn/ExampleApp.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
-| [Examples.md](source/Examples.md) ||[Chawler](https://github.com/chawler)||
+| [Examples.md](source/Examples.md) |[Examples.md](source-cn/Examples.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [GettingStarted.md](source/GettingStarted.md) |[GettingStarted.md](source-cn/GettingStarted.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [HotAndColdObservables.md](source/HotAndColdObservables.md) |[HotAndColdObservables.md](source-cn/HotAndColdObservables.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
 | [Installation.md](source/Installation.md) |[Installation.md](source-cn/Installation.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
