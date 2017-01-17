@@ -11,7 +11,7 @@ enum Event<Element>  {
 }
 ```
 
-让我们来讨论一下，如果 `ErrorType` 是反应的优劣点。
+让我们来讨论一下，如果 `ErrorType` 是泛型的优劣点。
 
 如果你有一个错误类型的泛型，你创建两个 observable 之间的额外阻抗失配。
 
