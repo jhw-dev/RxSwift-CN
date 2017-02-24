@@ -193,7 +193,7 @@ subscription.dispose() // executing on same `serialScheduler`
 
 当一个 `DisposeBag` 被销毁， 它会在每一个已加入的可处置对象中调用 `dispose` 方法。
 
-因为他没有 `dispose` 方法，所以不允许在目标上显示调用 dispose 方法。如果需要马上清理，我们仅需创建一个新的dipose bag。
+因为他没有 `dispose` 方法，所以不允许在目标上显式调用 dispose 方法。如果需要马上清理，我们仅需创建一个新的dipose bag。
 
 ```swift
   self.disposeBag = DisposeBag()
