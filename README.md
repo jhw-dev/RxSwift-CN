@@ -6,25 +6,25 @@
 |2.5.0|
 
 ## 当前状态
-| 原文 | 中文| 翻译人 | 校验人 |
-| --- | ---- | ---- | ----- |
-| [API.md](source/API.md) |[API.md](source-cn/API.md)|[Alan Li](https://github.com/iamlipan)||
-| [ComparisonWithOtherLibraries.md](source/ComparisonWithOtherLibraries.md) |[ComparisonWithOtherLibraries.md](source-cn/ComparisonWithOtherLibraries.md)|[zerob13](https://github.com/zerob13)|[Edison Hsu](https://github.com/Edison-Hsu)|
-| [DesignRationale.md](source/DesignRationale.md) |[DesignRationale.md](source-cn/DesignRationale.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
-| [ExampleApp.md](source/ExampleApp.md) |[ExampleApp.md](source-cn/ExampleApp.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
+| 原文 | 中文| 翻译人 |
+| --- | ---- | ---- |
+| [API.md](source/API.md) |[API.md](source-cn/API.md)|[Alan Li](https://github.com/iamlipan)|
+| [ComparisonWithOtherLibraries.md](source/ComparisonWithOtherLibraries.md) |[ComparisonWithOtherLibraries.md](source-cn/ComparisonWithOtherLibraries.md)|[zerob13](https://github.com/zerob13)|
+| [DesignRationale.md](source/DesignRationale.md) |[DesignRationale.md](source-cn/DesignRationale.md)|[Edison Hsu](https://github.com/Edison-Hsu)|
+| [ExampleApp.md](source/ExampleApp.md) |[ExampleApp.md](source-cn/ExampleApp.md)|[Edison Hsu](https://github.com/Edison-Hsu)|
 | [Examples.md](source/Examples.md) |[Examples.md](source-cn/Examples.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
-| [GettingStarted.md](source/GettingStarted.md) |[GettingStarted.md](source-cn/GettingStarted.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
-| [HotAndColdObservables.md](source/HotAndColdObservables.md) |[HotAndColdObservables.md](source-cn/HotAndColdObservables.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
-| [Installation.md](source/Installation.md) |[Installation.md](source-cn/Installation.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
-| [Linux.md](source/Linux.md) |[Linux.md](source-cn/Linux.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
-| [MathBehindRx.md](source/MathBehindRx.md) |[MathBehindRx.md](source-cn/MathBehindRx.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
-| [Playgrounds.md](source/Playgrounds.md) |[Playgrounds.md](source-cn/Playgrounds.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
-| [Schedulers.md](source/Schedulers.md) |[Schedulers.md](source-cn/Schedulers.md) |[Edison Hsu](https://github.com/Edison-Hsu)||
-| [Subjects.md](source/Subjects.md) |[Subjects.md](source-cn/Subjects.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
-| [Tips.md](source/Tips.md) |[Tips.md](source-cn/Tips.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
-| [Units.md](source/Units.md) | [Units.md](source-cn/Units.md) | [Edison Hsu](https://github.com/Edison-Hsu) ||
-| [Warnings.md](source/Warnings.md) |[Warnings.md](source/Warnings.md) |[Edison Hsu](https://github.com/Edison-Hsu)||
-| [Why.md](source/Why.md) |[Why.md](source-cn/Why.md)|[Edison Hsu](https://github.com/Edison-Hsu)||
+| [GettingStarted.md](source/GettingStarted.md) |[GettingStarted.md](source-cn/GettingStarted.md)|[Edison Hsu](https://github.com/Edison-Hsu)|
+| [HotAndColdObservables.md](source/HotAndColdObservables.md) |[HotAndColdObservables.md](source-cn/HotAndColdObservables.md)|[Edison Hsu](https://github.com/Edison-Hsu)|
+| [Installation.md](source/Installation.md) |[Installation.md](source-cn/Installation.md)|[Edison Hsu](https://github.com/Edison-Hsu)|
+| [Linux.md](source/Linux.md) |[Linux.md](source-cn/Linux.md)|[Edison Hsu](https://github.com/Edison-Hsu)|
+| [MathBehindRx.md](source/MathBehindRx.md) |[MathBehindRx.md](source-cn/MathBehindRx.md)|[Edison Hsu](https://github.com/Edison-Hsu)|
+| [Playgrounds.md](source/Playgrounds.md) |[Playgrounds.md](source-cn/Playgrounds.md)|[Edison Hsu](https://github.com/Edison-Hsu)|
+| [Schedulers.md](source/Schedulers.md) |[Schedulers.md](source-cn/Schedulers.md) |[Edison Hsu](https://github.com/Edison-Hsu)|
+| [Subjects.md](source/Subjects.md) |[Subjects.md](source-cn/Subjects.md)|[Edison Hsu](https://github.com/Edison-Hsu)|
+| [Tips.md](source/Tips.md) |[Tips.md](source-cn/Tips.md)|[Edison Hsu](https://github.com/Edison-Hsu)|
+| [Units.md](source/Units.md) | [Units.md](source-cn/Units.md) | [Edison Hsu](https://github.com/Edison-Hsu) |
+| [Warnings.md](source/Warnings.md) |[Warnings.md](source/Warnings.md) |[Edison Hsu](https://github.com/Edison-Hsu)|
+| [Why.md](source/Why.md) |[Why.md](source-cn/Why.md)|[Edison Hsu](https://github.com/Edison-Hsu)|
 
 ## 如何参与翻译流程
 1. 查看上表和pull request 中还空缺的位置（例如API.md中翻译人是空白或pr中未有人认领）
